@@ -1,0 +1,26 @@
+server:
+  port: 8761
+  servlet:
+    context-path: '/eureka'
+
+eureka:
+  environment: aws
+  datacenter: cloud
+  instance:
+    preferIpAddress: false
+    ipAddress: '${HOST_IP}'
+    hostname: '${SERVICE_HOSTNAME}'
+    instanceId: '${HOST_IP}:${server.port}'
+    healthCheckUrl: 'http://${HOST_IP}:${server.port}${server.servlet.context-path}/actuator/health'
+    metadataMap:
+      management:
+        context-path: ${server.servlet.context-path}/actuator
+        port: ${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: 'http://eureka-server-1.local:8761/eureka-server/eureka,http://eureka-server-2.local:8761/eureka-server/eureka'
+  server:
+    enableSelfPreservation: false
+    batchReplication: true
