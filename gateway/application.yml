@@ -1,0 +1,2 @@
+zuul:
+  retryable: true # Enable retries on Zuul
