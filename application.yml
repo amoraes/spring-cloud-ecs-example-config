@@ -17,11 +17,11 @@ spring:
 ribbon:
   eureka:
     enabled: true
-  ReadTimeout: 1000 # Default timeout
+  ReadTimeout: 3000 # Default timeout
 
 hystryx:
   command:
-    execution.isolation.thread.timeoutInMilliseconds: 3000 # overall timeout
+    execution.isolation.thread.timeoutInMilliseconds: 10000 # overall timeout
 
 feign:
   hystrix:
