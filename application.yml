@@ -22,3 +22,7 @@ ribbon:
 hystryx:
   command:
     execution.isolation.thread.timeoutInMilliseconds: 3000 # overall timeout
+
+feign:
+  hystrix:
+    enabled: true
