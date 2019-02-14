@@ -1,2 +1,7 @@
 zuul:
   retryable: true # Enable retries on Zuul
+  routes:
+    hello-service:
+      service-id: 'hello-service'
+      path: '/v1/greeting**'
+      strip-prefix: false
