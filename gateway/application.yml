@@ -5,3 +5,7 @@ zuul:
       service-id: 'hello-service'
       path: '/v1/greeting**'
       strip-prefix: false
+    weather-service:
+      service-id: 'weather-service'
+      path: '/v1/weather**'
+      strip-prefix: false
