@@ -1,3 +1,2 @@
 zuul:
   retryable: true # Enable retries on Zuul
-  ignored-services: '*'
