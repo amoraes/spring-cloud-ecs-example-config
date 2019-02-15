@@ -26,3 +26,9 @@ hystryx:
 feign:
   hystrix:
     enabled: true
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: '/${application.name}-docs'
