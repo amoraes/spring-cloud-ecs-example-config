@@ -31,4 +31,4 @@ springfox:
   documentation:
     swagger:
       v2:
-        path: '/${application.name}-docs'
+        path: '/docs'
