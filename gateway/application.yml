@@ -1,2 +1,3 @@
 zuul:
   retryable: true # Enable retries on Zuul
+  ignored-services: config-server,spring-boot-admin,eureka
