@@ -22,3 +22,10 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: 'http://eureka-1.internal:8761/eureka/eureka,http://eureka-2.internal:8761/eureka/eureka'
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    baseUrl:  'http://zipkin.internal:9411'
