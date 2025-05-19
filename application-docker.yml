@@ -3,11 +3,11 @@ server:
     context-path: ''
 
 logging:
-  file: '/var/log/${spring.application.name}.log'
+  file:
+    name: '/var/log/${spring.application.name}.log'
 
 eureka:
   instance:
-    hostname: '${HOST_DOMAIN}'
     preferIpAddress: false
     instanceId: '${eureka.instance.hostname}:${server.port}'
     homePageUrl: 'http://${eureka.instance.hostname}:${server.port}'
@@ -20,11 +20,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: 'http://${HOST_DOMAIN}:8761/eureka'
-
-spring:
-  sleuth:
-    sampler:
-      probability: 1.0
-  zipkin:
-    baseUrl:  'http://${HOST_DOMAIN}:9411'
+      defaultZone: 'http://eureka:8761/eureka'
