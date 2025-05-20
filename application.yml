@@ -1,6 +1,10 @@
 springdoc:
   swagger-ui:
     path: /docs
+  api-docs:
+    path: '/${application.name}-docs'
+  packagesToScan: au.com.infomedia
+  pathsToMatch: /v*/**
 
 management:
   endpoints:
