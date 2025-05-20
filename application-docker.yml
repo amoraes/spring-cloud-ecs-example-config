@@ -8,7 +8,8 @@ logging:
 
 eureka:
   instance:
-    preferIpAddress: false
+    hostname: '${HOSTNAME}'
+    preferIpAddress: true
     instanceId: '${eureka.instance.hostname}:${server.port}'
     homePageUrl: 'http://${eureka.instance.hostname}:${server.port}'
     healthCheckUrl: 'http://${eureka.instance.hostname}:${server.port}${server.servlet.context-path}/actuator/health'
