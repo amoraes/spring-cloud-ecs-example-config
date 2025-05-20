@@ -2,6 +2,10 @@ server:
   servlet:
     context-path: ''
 
+springdoc:
+  swagger-ui:
+    path: /docs
+
 eureka:
   instance:
     ipAddress: '${HOST_IP:127.0.0.1}'
