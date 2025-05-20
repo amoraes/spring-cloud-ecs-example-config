@@ -18,8 +18,6 @@ eureka:
         context-path: '${server.servlet.context-path}/actuator'
         port: '${HOST_PORT}'
   client:
-    registerWithEureka: true
-    fetchRegistry: true
     serviceUrl:
       defaultZone: 'http://eureka-1.internal:8761/eureka/eureka,http://eureka-2.internal:8761/eureka/eureka'
 

@@ -13,6 +13,11 @@ management:
         include: *
 
 eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    initialInstanceInfoReplicationIntervalSeconds: 10
+    registryFetchIntervalSeconds: 30 # our services are not that dynamic to need less than the default 30s
   instance:
     ipAddress: '${HOST_IP:127.0.0.1}'
     nonSecurePort: '${server.port}'

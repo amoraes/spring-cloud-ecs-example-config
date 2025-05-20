@@ -18,7 +18,5 @@ eureka:
         context-path: ${server.servlet.context-path}/actuator
         port: ${server.port}
   client:
-    registerWithEureka: true
-    fetchRegistry: true
     serviceUrl:
       defaultZone: 'http://eureka:8761/eureka'
