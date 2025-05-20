@@ -2,37 +2,6 @@ server:
   servlet:
     context-path: ''
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-
-spring:
-  sleuth:
-    web:
-      additional-skip-pattern: '${server.servlet.context-path}/actuator.*|${server.servlet.context-path}/swagger-resources.*|${server.servlet.context-path}/webjars/.*|/.*/api-docs|/docs'
-
-# Ribbon and Hystrix general configuration
-ribbon:
-  eureka:
-    enabled: true
-  ReadTimeout: 10000 # Default timeout
-
-hystryx:
-  command:
-    execution.isolation.thread.timeoutInMilliseconds: 20000 # overall timeout
-
-feign:
-  hystrix:
-    enabled: true
-
-springfox:
-  documentation:
-    swagger:
-      v2:
-        path: '/docs'
-
 eureka:
   instance:
     ipAddress: '${HOST_IP:127.0.0.1}'
