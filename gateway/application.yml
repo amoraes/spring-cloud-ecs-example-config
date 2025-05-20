@@ -1,5 +1,53 @@
 server:
   port: ${SERVER_PORT:9090}
-zuul:
-  retryable: true # Enable retries on Zuul
-  ignored-services: config-server,spring-boot-admin,eureka
+  servlet:
+    context-path: '/gateway'
+
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 2000
+        response-timeout: 5s
+        max-header-size: 300000
+      routes:
+        - id: hello-service
+          uri: lb://hello-service
+          predicates:
+            - Path=${server.servlet.context-path}/v*/hello/**,${server.servlet.context-path}/hello-service-docs
+          filters:
+            - StripPrefix=1
+            - name: Retry
+              args:
+                retries: 3
+                exceptions: java.io.IOException, java.net.ConnectException
+                statuses: INTERNAL_SERVER_ERROR, NOT_IMPLEMENTED, BAD_GATEWAY, SERVICE_UNAVAILABLE
+                series: INFORMATIONAL # if not set it will retry any 5xx error by default, which is wrong
+                methods: GET
+                backoff:
+                  firstBackoff: 100ms
+                  maxBackoff: 500ms
+                  factor: 2
+          metadata:
+            show-docs: true
+            response-timeout: 5000
+        - id: weather-service
+          uri: lb://weather-service
+          predicates:
+            - Path=${server.servlet.context-path}/v*/weather/**,${server.servlet.context-path}/weather-service-docs
+          filters:
+            - StripPrefix=1
+            - name: Retry
+              args:
+                retries: 3
+                exceptions: java.io.IOException, java.net.ConnectException
+                statuses: INTERNAL_SERVER_ERROR, NOT_IMPLEMENTED, BAD_GATEWAY, SERVICE_UNAVAILABLE
+                series: INFORMATIONAL # if not set it will retry any 5xx error by default, which is wrong
+                methods: GET
+                backoff:
+                  firstBackoff: 100ms
+                  maxBackoff: 500ms
+                  factor: 2
+          metadata:
+            show-docs: true
+            response-timeout: 5000
