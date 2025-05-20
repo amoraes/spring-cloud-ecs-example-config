@@ -6,6 +6,12 @@ springdoc:
   swagger-ui:
     path: /docs
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: *
+
 eureka:
   instance:
     ipAddress: '${HOST_IP:127.0.0.1}'
