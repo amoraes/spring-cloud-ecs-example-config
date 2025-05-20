@@ -14,7 +14,6 @@ spring:
           predicates:
             - Path=/v*/hello/**,/hello-service-docs
           filters:
-            - StripPrefix=1
             - name: Retry
               args:
                 retries: 3
@@ -34,7 +33,6 @@ spring:
           predicates:
             - Path=/v*/weather/**,/weather-service-docs
           filters:
-            - StripPrefix=1
             - name: Retry
               args:
                 retries: 3
