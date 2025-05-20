@@ -1,7 +1,3 @@
-server:
-  servlet:
-    context-path: ''
-
 logging:
   file:
     name: '/var/log/${spring.application.name}.log'
@@ -12,10 +8,10 @@ eureka:
     preferIpAddress: false
     instanceId: '${eureka.instance.hostname}:${server.port}'
     homePageUrl: 'http://${eureka.instance.hostname}:${server.port}'
-    healthCheckUrl: 'http://${eureka.instance.hostname}:${server.port}${server.servlet.context-path}/actuator/health'
+    healthCheckUrl: 'http://${eureka.instance.hostname}:${server.port}/actuator/health'
     metadataMap:
       management:
-        context-path: ${server.servlet.context-path}/actuator
+        context-path: /actuator
         port: ${server.port}
   client:
     serviceUrl:

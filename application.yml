@@ -1,7 +1,3 @@
-server:
-  servlet:
-    context-path: ''
-
 springdoc:
   swagger-ui:
     path: /docs
@@ -23,8 +19,8 @@ eureka:
     nonSecurePort: '${server.port}'
     preferIpAddress: true
     instanceId: '${HOST_IP:127.0.0.1}:${server.port}'
-    healthCheckUrl: 'http://${HOST_IP:127.0.0.1}:${server.port}${server.servlet.context-path}/actuator/health'
+    healthCheckUrl: 'http://${HOST_IP:127.0.0.1}:${server.port}/actuator/health'
     metadataMap:
       management:
-        context-path: '${server.servlet.context-path}/actuator'
+        context-path: '/actuator'
         port: '${server.port}'

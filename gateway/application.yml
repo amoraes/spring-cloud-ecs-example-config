@@ -1,7 +1,5 @@
 server:
   port: ${SERVER_PORT:9090}
-  servlet:
-    context-path: '/gateway'
 
 spring:
   cloud:
@@ -14,7 +12,7 @@ spring:
         - id: hello-service
           uri: lb://hello-service
           predicates:
-            - Path=${server.servlet.context-path}/v*/hello/**,${server.servlet.context-path}/hello-service-docs
+            - Path=/v*/hello/**,/hello-service-docs
           filters:
             - StripPrefix=1
             - name: Retry
@@ -34,7 +32,7 @@ spring:
         - id: weather-service
           uri: lb://weather-service
           predicates:
-            - Path=${server.servlet.context-path}/v*/weather/**,${server.servlet.context-path}/weather-service-docs
+            - Path=/v*/weather/**,/weather-service-docs
           filters:
             - StripPrefix=1
             - name: Retry

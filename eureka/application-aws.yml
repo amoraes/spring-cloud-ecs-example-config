@@ -1,7 +1,5 @@
 server:
   port: 8761
-  servlet:
-    context-path: '/eureka'
 
 eureka:
   environment: aws
@@ -11,10 +9,10 @@ eureka:
     ipAddress: '${HOST_IP}'
     hostname: '${SERVICE_HOSTNAME}'
     instanceId: '${HOST_IP}:${server.port}'
-    healthCheckUrl: 'http://${HOST_IP}:${server.port}${server.servlet.context-path}/actuator/health'
+    healthCheckUrl: 'http://${HOST_IP}:${server.port}/actuator/health'
     metadataMap:
       management:
-        context-path: ${server.servlet.context-path}/actuator
+        context-path: /actuator
         port: ${server.port}
   client:
     registerWithEureka: true
